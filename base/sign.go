@@ -109,9 +109,10 @@ func GetSignRequest(requestParam RequestParam, credentials Credentials) SignRequ
 			requestSignMap[k] = v
 		}
 		if requestSignMap["Content-Type"] == nil {
-			signRequest.ContentType = "application/x-www-form-urlencoded; charset=utf-8"
+			signRequest.ContentType = "application/x-www-form-urlencoded;charset=utf-8"
 		} else {
 			signRequest.ContentType = requestSignMap["Content-Type"][0]
+			signRequest.ContentType = strings.ReplaceAll(signRequest.ContentType, " ", "")
 		}
 		requestSignMap["X-Date"], requestSignMap["Host"], requestSignMap["Content-Type"] = []string{formatDate}, []string{requestParam.Host}, []string{signRequest.ContentType}
 
