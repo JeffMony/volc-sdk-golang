@@ -657,6 +657,14 @@ type ImageX struct {
 	*base.Client
 }
 
+var HttpProxy string
+var HttpsProxy string
+
+func SetProxySettings(httpProxy string, httpsProxy string) {
+	HttpProxy = httpProxy
+	HttpsProxy = httpsProxy
+}
+
 func NewInstance() *ImageX {
 	instance := &ImageX{
 		Client: base.NewClient(ServiceInfoMap[base.RegionCnNorth1], ApiInfoList),
