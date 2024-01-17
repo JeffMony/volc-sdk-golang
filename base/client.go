@@ -53,6 +53,9 @@ func volcProxy() func(req *http.Request) (*url.URL, error) {
 func init() {
 	_GlobalClient = &http.Client{
 		Transport: &http.Transport{
+			TLSClientConfig: &tls.Config {
+				InsecureSkipVerify: true
+			},
 			MaxIdleConns:        1000,
 			MaxIdleConnsPerHost: 100,
 			IdleConnTimeout:     10 * time.Second,
