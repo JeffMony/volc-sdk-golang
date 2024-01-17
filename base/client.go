@@ -3,6 +3,7 @@ package base
 import (
 	"bytes"
 	"context"
+	"crypto/tls"
 	"encoding/base64"
 	"encoding/json"
 	"errors"
@@ -41,8 +42,8 @@ var (
 
 func volcProxy() func(req *http.Request) (*url.URL, error) {
 	c := &httpproxy.Config{
-		HTTPProxy:  config.HttpProxy,
-		HTTPSProxy: config.HttpsProxy,
+		HTTPProxy:  httpProxy,
+		HTTPSProxy: httpsProxy,
 		NoProxy:    os.Getenv(noProxy),
 		CGI:        os.Getenv(requestMethod) != "",
 	}
