@@ -42,8 +42,8 @@ var (
 
 func volcProxy() func(req *http.Request) (*url.URL, error) {
 	c := &httpproxy.Config{
-		HTTPProxy:  httpProxy,
-		HTTPSProxy: httpsProxy,
+		HTTPProxy:  os.Getenv(httpProxy),
+		HTTPSProxy: os.Getenv(httpsProxy),
 		NoProxy:    os.Getenv(noProxy),
 		CGI:        os.Getenv(requestMethod) != "",
 	}
