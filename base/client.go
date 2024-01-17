@@ -54,7 +54,7 @@ func init() {
 	_GlobalClient = &http.Client{
 		Transport: &http.Transport{
 			TLSClientConfig: &tls.Config {
-				InsecureSkipVerify: true
+				InsecureSkipVerify: true,
 			},
 			MaxIdleConns:        1000,
 			MaxIdleConnsPerHost: 100,
